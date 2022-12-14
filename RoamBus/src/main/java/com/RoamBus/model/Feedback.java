@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
 public class Feedback {
 	
@@ -129,7 +128,5 @@ public class Feedback {
 				+ serviceRating + ", overallRating=" + overallRating + ", comments=" + comments + ", feedback="
 				+ feedback + ", user=" + user + ", bus=" + bus + "]";
 	}
-	
-	
 	
 }
