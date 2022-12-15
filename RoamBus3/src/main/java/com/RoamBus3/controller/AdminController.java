@@ -25,7 +25,7 @@ public class AdminController {
 	private AdminService aService;
 	
 	@PostMapping("/admin")
-	public ResponseEntity<Admin> registerUser(@RequestBody Admin user) throws AdminException{
+	public ResponseEntity<Admin> registerUser(@Valid @RequestBody Admin user) throws AdminException{
 		Admin a=aService.registerUser(user);
 		
 		return new ResponseEntity<Admin>(a,HttpStatus.CREATED);
@@ -41,8 +41,9 @@ public class AdminController {
 	}
 
 	
+	
 	@PutMapping("/admin")
-	public ResponseEntity<Admin> updateUserHandler(@RequestParam (required = false) String key, @RequestBody Admin user) throws AdminException, LoginException {
+	public ResponseEntity<Admin> updateUserHandler(@Valid @RequestParam (required = false) String key, @RequestBody Admin user) throws AdminException, LoginException {
 
 		Admin updatedUser = aService.updateUser(user, key);
 

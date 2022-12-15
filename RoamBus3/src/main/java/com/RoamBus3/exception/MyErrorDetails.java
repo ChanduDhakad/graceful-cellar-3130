@@ -18,5 +18,44 @@ public class MyErrorDetails {
 	public MyErrorDetails() {
 		// TODO Auto-generated constructor stub
 	}
+
+	
+
+	public LocalDateTime getLocalDateTime() {
+		return localDateTime;
+	}
+
+
+	public void setLocalDateTime(LocalDateTime localDateTime) {
+		this.localDateTime = localDateTime;
+	}
+
+
+	public String getMessage() {
+		return message;
+	}
+
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	@Override
+	public String toString() {
+		return "MyErrorDetails [localDateTime=" + localDateTime + ", message=" + message + ", description="
+				+ description + "]";
+	}
+	
 	
 }

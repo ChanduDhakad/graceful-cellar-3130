@@ -41,15 +41,30 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Admin updateUser(Admin user, String key) throws AdminException, LoginException {
+//		CurrentUser cu=cudao.findByUuid(key);
+//		
+//		if(cu == null) {
+//			throw new LoginException("Login first");
+//		}
+//		if(user.getAdminId()==cu.getUserId()){
+//			return adao.save(user);
+//		}
+//		throw new AdminException("Invalid admin details");
+//		
 		CurrentUser cu=cudao.findByUuid(key);
 		
 		if(cu == null) {
-			throw new AdminException("Please provide valid credential");
+			throw new LoginException("Login first");
 		}
-		if(user.getAdminId() == cu.getUserId()) {
-			return adao.save(user);
+		Optional<Admin> a=adao.findById(user.getAdminId());
+		
+		if(a.isPresent()) {
+		   return  adao.save(user);
+
 		}
-		throw new AdminException("Invalid admin details");
+		throw new AdminException("You are not an admin");
+		
+		
 		
 	}
 
