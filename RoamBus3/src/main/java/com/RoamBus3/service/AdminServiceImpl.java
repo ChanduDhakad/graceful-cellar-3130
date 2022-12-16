@@ -41,16 +41,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Admin updateUser(Admin user, String key) throws AdminException, LoginException {
-//		CurrentUser cu=cudao.findByUuid(key);
-//		
-//		if(cu == null) {
-//			throw new LoginException("Login first");
-//		}
-//		if(user.getAdminId()==cu.getUserId()){
-//			return adao.save(user);
-//		}
-//		throw new AdminException("Invalid admin details");
-//		
+	
 		CurrentUser cu=cudao.findByUuid(key);
 		
 		if(cu == null) {
@@ -64,33 +55,82 @@ public class AdminServiceImpl implements AdminService {
 		}
 		throw new AdminException("You are not an admin");
 		
-		
-		
 	}
 
 	@Override
-	public Admin deleteUser(String adminUsername) throws AdminException {
-		// TODO Auto-generated method stub
-		return null;
+	public Admin deleteUser(String adminUsername,String key) throws AdminException {
+		Admin a=adao.findByAdminUsername(adminUsername);
+
+		CurrentUser cu=cudao.findByUuid(key);
+		
+		if(a==null) {
+			throw new AdminException("Sorry it's a wrong username");
+		}
+		if(cudao.findByUuid(key) !=null) {
+			adao.delete(a);
+			cudao.delete(cu);
+			return a;
+			
+		}
+		
+		throw new AdminException("Please login first");
 	}
+	
 
 	@Override
 	public Admin findByAdminId(Integer adminId) throws AdminException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Optional<Admin> opt=adao.findById(adminId);
+		
+		if(opt.isPresent()) {
+			return opt.get();
+		}
+		throw new AdminException("there is no admin present with this id");
+		
 	}
 
 	@Override
-	public Admin findByUserName(String adminUserName) throws AdminException {
-		// TODO Auto-generated method stub
-		return null;
+	public Admin findByUserName(String adminUserName , String key) throws AdminException, LoginException {
+		CurrentUser cu=cudao.findByUuid(key);
+
+		if(cu == null) {
+			throw new LoginException("Login first");
+		}
+		Optional<Admin> a=adao.findById(adao.findByAdminUsername(adminUserName).getAdminId());
+		
+		if(a.isPresent()) {
+		   return a.get();
+
+		}
+		throw new AdminException("You are not an admin");
 	}
 
 	@Override
-	public List<Admin> findAllUsers() throws AdminException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Admin> findAllUsers(String key) throws AdminException, LoginException {
+		
+		CurrentUser cu=cudao.findByUuid(key);
+
+		if(cu == null) {
+			throw new LoginException("Login first");
+		}
+		Optional<Admin> a=adao.findById(cu.getUserId());
+		
+		if(a.isPresent()) {
+			List<Admin> alist=adao.findAll();
+			
+			if(a.isEmpty()) {
+				throw new AdminException("No one present in the list yet");
+			}
+			return alist;
+
+		}
+		throw new AdminException("You are not an admin");
+		
+			
+		
 	}
+
+	
 
 
 	
