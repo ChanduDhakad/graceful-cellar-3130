@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Feedback {
@@ -32,11 +34,14 @@ public class Feedback {
 	
 	private LocalDate feedback;
 	
-	@Embedded
-	private User user;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Bus bus;
+	/*
+//	
+//	@JsonIgnore
+//	@Embedded
+//	private User user;
+//	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private Bus bus;
 
 	public Feedback() {
 		super();
@@ -130,6 +135,6 @@ public class Feedback {
 				+ feedback + ", user=" + user + ", bus=" + bus + "]";
 	}
 	
-	
+	*/
 	
 }

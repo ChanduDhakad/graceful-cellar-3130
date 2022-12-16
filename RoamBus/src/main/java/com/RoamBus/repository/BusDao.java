@@ -9,4 +9,6 @@ import com.RoamBus.model.Bus;
 @Repository
 public interface BusDao  extends JpaRepository<Bus, Integer>{
 
+	
+	       Bus   findBybusName(String name);
 }

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Reservation {
 	
@@ -18,7 +20,7 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int reservationId;
 	
-	@NotNull(message = "Please update the status")
+//	@NotNull(message = "Please update the status")
 	private String status;
 	
 	@NotNull(message = "Please enter add the type")
@@ -27,14 +29,19 @@ public class Reservation {
 	private LocalDate localDate;
 	private LocalTime time;
 	
-	@NotNull(message = "Please tell us your source location")
+//	@NotNull(message = "Please tell us your source location")
 	private String source;
 	
-	@NotNull(message = "Please tell us your destination")
+//	@NotNull(message = "Please tell us your destination")
 	private String destination;
 	
+      //@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Bus bus;
+      
+     // @JsonIgnore
+  	@OneToOne(cascade = CascadeType.ALL)
+  	private User user;
 
 	public Reservation() {
 		super();
@@ -42,18 +49,18 @@ public class Reservation {
 	}
 
 	public Reservation(int reservationId, @NotNull(message = "Please update the status") String status,
-			@NotNull(message = "Please enter add the type") String type, LocalDate localDate, LocalTime time,
+			@NotNull(message = "Please enter add the type") String type,
 			@NotNull(message = "Please tell us your source location") String source,
 			@NotNull(message = "Please tell us your destination") String destination, Bus bus) {
 		super();
 		this.reservationId = reservationId;
 		this.status = status;
-		Type = type;
+		this.Type = type;
 		this.localDate = localDate;
-		this.time = time;
+		this.time = time.now();
 		this.source = source;
 		this.destination = destination;
-		this.bus = bus;
+//		this.bus = bus;
 	}
 
 	public int getReservationId() {
@@ -81,19 +88,19 @@ public class Reservation {
 	}
 
 	public LocalDate getLocalDate() {
-		return localDate;
+		return localDate.now();
 	}
 
 	public void setLocalDate(LocalDate localDate) {
-		this.localDate = localDate;
+		this.localDate = localDate.now();
 	}
 
 	public LocalTime getTime() {
-		return time;
+		return time.now();
 	}
 
 	public void setTime(LocalTime time) {
-		this.time = time;
+		this.time = time.now();
 	}
 
 	public String getSource() {
@@ -120,12 +127,22 @@ public class Reservation {
 		this.bus = bus;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservation [reservationId=" + reservationId + ", status=" + status + ", Type=" + Type + ", localDate="
 				+ localDate + ", time=" + time + ", source=" + source + ", destination=" + destination + ", bus=" + bus
-				+ "]";
+				+ ", user=" + user + "]";
 	}
+
+
 	
 	
 	

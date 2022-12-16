@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.RoamBus.model.Bus;
 import com.RoamBus.model.Feedback;
 
-
-@Repository
-public interface FeedbackDao  extends JpaRepository<Feedback, Integer>{
-
-}
+//
+//@Repository
+//public interface FeedbackDao  extends JpaRepository<Feedback, Integer>{
+//
+//}

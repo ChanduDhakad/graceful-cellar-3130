@@ -7,8 +7,8 @@ import com.RoamBus.model.Bus;
 import com.RoamBus.model.Feedback;
 import com.RoamBus.model.Route;
 
-
-@Repository
-public interface RouteDao  extends JpaRepository<Route, Integer>{
-
-}
+//
+//@Repository
+//public interface RouteDao  extends JpaRepository<Route, Integer>{
+//
+//}

@@ -14,11 +14,13 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Bus {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int busId;
 	
 	@NotNull(message = "Please enter the bus name")
@@ -37,7 +39,7 @@ public class Bus {
 	private LocalTime departureTime;
 	
 	@NotNull(message = "How many seats you have still we don't know")
-	@Min(value = 30, message = "Minimum seats should be 30")
+	@Min(value = 0, message = "Minimum seats should be 30")
 	@Max(value = 100, message = "Your bus capacity at most should be 100")
 	private int seats;
 	
@@ -46,14 +48,16 @@ public class Bus {
 	@Min(value = 0, message = "you can't put a negetive value")
 	private int avilableSeats;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Feedback feedback;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private Feedback feedback;
+//	@JsonIgnore
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Reservation reservation;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Route> routes;
+//	
+//	@OneToMany(cascade = CascadeType.ALL)
+//	private List<Route> routes;
 
 	public Bus() {
 		super();
@@ -63,8 +67,8 @@ public class Bus {
 	public Bus(int busId, @NotNull(message = "Please enter the bus name") String busName,
 			@NotNull(message = "Please enter the bus type") String busType,
 			@NotNull(message = "Please let us know your source of destination") String routeFrom,
-			@NotNull(message = "Please tell us your destination") String routeTo, LocalTime arrivalTime,
-			LocalTime departureTime,
+			@NotNull(message = "Please tell us your destination") String routeTo,
+			
 			@NotNull(message = "How many seats you have still we don't know") @Min(value = 30, message = "Minimum seats should be 30") @Max(value = 100, message = "Your bus capacity at most should be 100") int seats,
 			@NotNull(message = "Can not be null") @Max(value = 100, message = "Your seat availability can not be beyond 100") @Min(value = 0, message = "you can't put a negetive value") int avilableSeats,
 			Feedback feedback, Reservation reservation, List<Route> routes) {
@@ -74,13 +78,13 @@ public class Bus {
 		this.busType = busType;
 		this.routeFrom = routeFrom;
 		this.routeTo = routeTo;
-		this.arrivalTime = arrivalTime;
-		this.departureTime = departureTime;
+		this.arrivalTime = LocalTime.now().plusHours(4);
+		this.departureTime = LocalTime.now().plusHours(5);
 		this.seats = seats;
 		this.avilableSeats = avilableSeats;
-		this.feedback = feedback;
+//		this.feedback = feedback;
 		this.reservation = reservation;
-		this.routes = routes;
+//		this.routes = routes;
 	}
 
 	public int getBusId() {
@@ -124,19 +128,19 @@ public class Bus {
 	}
 
 	public LocalTime getArrivalTime() {
-		return arrivalTime;
+		return arrivalTime.now().plusHours(4);
 	}
 
 	public void setArrivalTime(LocalTime arrivalTime) {
-		this.arrivalTime = arrivalTime;
+		this.arrivalTime = arrivalTime.now().plusHours(4);
 	}
 
 	public LocalTime getDepartureTime() {
-		return departureTime;
-	}
+		return departureTime.now().plusHours(5);
+		}
 
 	public void setDepartureTime(LocalTime departureTime) {
-		this.departureTime = departureTime;
+		this.departureTime = departureTime.now().plusHours(5);
 	}
 
 	public int getSeats() {
@@ -155,13 +159,29 @@ public class Bus {
 		this.avilableSeats = avilableSeats;
 	}
 
-	public Feedback getFeedback() {
-		return feedback;
-	}
-
-	public void setFeedback(Feedback feedback) {
-		this.feedback = feedback;
-	}
+	
+	
+//	public Feedback getFeedback() {
+//		return feedback;
+//	}
+//
+//	public void setFeedback(Feedback feedback) {
+//		this.feedback = feedback;
+//	}
+////public Reservation getReservation() {
+//}
+//
+//}
+////		return reservation;
+////	}
+////
+////	public void setReservation(Reservation reservation) {
+////		this.reservation = reservation;
+////	}
+////
+////	public List<Route> getRoutes() {
+////		return routes;
+////	}
 
 	public Reservation getReservation() {
 		return reservation;
@@ -171,21 +191,16 @@ public class Bus {
 		this.reservation = reservation;
 	}
 
-	public List<Route> getRoutes() {
-		return routes;
-	}
-
-	public void setRoutes(List<Route> routes) {
-		this.routes = routes;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Bus [busId=" + busId + ", busName=" + busName + ", busType=" + busType + ", routeFrom=" + routeFrom
 				+ ", routeTo=" + routeTo + ", arrivalTime=" + arrivalTime + ", departureTime=" + departureTime
-				+ ", seats=" + seats + ", avilableSeats=" + avilableSeats + ", feedback=" + feedback + ", reservation="
-				+ reservation + ", routes=" + routes + "]";
+				+ ", seats=" + seats + ", avilableSeats=" + avilableSeats + " reservation="
+				;
 	}
-	
-	
 }
+	
+	
+

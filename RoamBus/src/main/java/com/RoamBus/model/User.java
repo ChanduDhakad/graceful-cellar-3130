@@ -11,12 +11,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class User {
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userLoginId;
 	
 	@NotNull(message = "Please enter the username")
@@ -39,7 +40,8 @@ public class User {
 	@NotNull(message = "Please enter the email")
 	@Email(message = "Please enter a valid email id")
 	private String email;
-	
+
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Reservation reservation;
 
@@ -122,6 +124,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public Reservation getReservation() {
 		return reservation;

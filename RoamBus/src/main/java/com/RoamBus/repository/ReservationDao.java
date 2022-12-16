@@ -7,7 +7,7 @@ import com.RoamBus.model.Bus;
 import com.RoamBus.model.Feedback;
 import com.RoamBus.model.Reservation;
 import com.RoamBus.model.Route;
-import com.RoamBus.model.User;
+
 
 
 @Repository

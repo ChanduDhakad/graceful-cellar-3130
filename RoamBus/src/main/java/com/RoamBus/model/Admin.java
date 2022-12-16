@@ -9,9 +9,9 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Admin {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int adminId;
 	
 	@NotNull(message = "Please enter the username")
@@ -21,6 +21,7 @@ public class Admin {
 	@Size(max = 15, min = 8, message = "Your password should be at least of 8 charecters and at most of 15 charecters")
 	private String password;
 
+	
 	public Admin() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -58,10 +59,7 @@ public class Admin {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "Admin [adminId=" + adminId + ", adminUsername=" + adminUsername + ", password=" + password + "]";
-	}
+	
 	
 	
 

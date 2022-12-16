@@ -5,15 +5,17 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 
+
+
 public class Route {
 
 	private int routeId;
 	private String routeFrom;
 	private String routeTo;
 	private int distance;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Bus> bus;
+//	
+//	@OneToMany(cascade = CascadeType.ALL)
+//	private List<Bus> bus;
 
 	public Route() {
 		super();
@@ -26,7 +28,7 @@ public class Route {
 		this.routeFrom = routeFrom;
 		this.routeTo = routeTo;
 		this.distance = distance;
-		this.bus = bus;
+//		this.bus = bus;
 	}
 
 	public int getRouteId() {
@@ -61,18 +63,18 @@ public class Route {
 		this.distance = distance;
 	}
 
-	public List<Bus> getBus() {
-		return bus;
-	}
+//	public List<Bus> getBus() {
+//		return bus;
+//	}
+//
+//	public void setBus(List<Bus> bus) {
+//		this.bus = bus;
+//	}
 
-	public void setBus(List<Bus> bus) {
-		this.bus = bus;
-	}
-
-	@Override
-	public String toString() {
-		return "Route [routeId=" + routeId + ", routeFrom=" + routeFrom + ", routeTo=" + routeTo + ", distance="
-				+ distance + ", bus=" + bus + "]";
-	}
-	
+//	@Override
+//	public String toString() {
+//		return "Route [routeId=" + routeId + ", routeFrom=" + routeFrom + ", routeTo=" + routeTo + ", distance="
+//				+ distance + ", bus=" + bus + "]";
+//	}
+//	
 }
