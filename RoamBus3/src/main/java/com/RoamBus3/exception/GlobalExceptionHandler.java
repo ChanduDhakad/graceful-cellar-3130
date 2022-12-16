@@ -28,6 +28,22 @@ public class GlobalExceptionHandler {
 		
 		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 		
+	}
+	
+	@ExceptionHandler(BusException.class)
+	public ResponseEntity<MyErrorDetails> myBusExceptionHandler(BusException be,WebRequest req){
 		
+		MyErrorDetails err=new MyErrorDetails(LocalDateTime.now(),be.getMessage(),req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	@ExceptionHandler(RouteException.class)
+	public ResponseEntity<MyErrorDetails> myRouteExceptionHandler(RouteException re,WebRequest req){
+		
+		MyErrorDetails err=new MyErrorDetails(LocalDateTime.now(),re.getMessage(),req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
 }

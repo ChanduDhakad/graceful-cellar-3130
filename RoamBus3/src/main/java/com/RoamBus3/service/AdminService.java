@@ -13,11 +13,11 @@ public interface AdminService {
 
 	public Admin updateUser(Admin user, String key) throws AdminException, LoginException;
 
-	public Admin deleteUser(String adminUsername) throws AdminException;
+	public Admin deleteUser(String adminUsername, String key) throws AdminException;
 
 	public Admin findByAdminId(Integer adminId) throws AdminException;
 
-	public Admin findByUserName(String adminUserName) throws AdminException;
+	public Admin findByUserName(String adminUserName, String key) throws AdminException, LoginException;
 
-	public List<Admin> findAllUsers() throws AdminException;
+	public List<Admin> findAllUsers(String key) throws AdminException, LoginException;
 }
