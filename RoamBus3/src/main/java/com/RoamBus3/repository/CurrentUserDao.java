@@ -11,5 +11,4 @@ public interface CurrentUserDao extends JpaRepository<CurrentUser, Integer> {
 	
 	public CurrentUser findByUuid(String uuid);
 
-
 }
