@@ -1,90 +1,70 @@
 package com.RoamBus.model;
 
 import java.time.LocalTime;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
+//@Table(name= "Bus")
 public class Bus {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int busId;
 	
-	@NotNull(message = "Please enter the bus name")
+	@NotNull(message = "Please enter the name")
 	private String busName;
 	
-	@NotNull(message = "Please enter the bus type")
+	@NotNull(message = "Please enter the driver name")
+	private String driverName;
+	
+	@NotNull(message = "Please add bus type")
 	private String busType;
 	
-	@NotNull(message = "Please let us know your source of destination")
+	@NotNull(message = "Please enter the source stop")
 	private String routeFrom;
 	
-	@NotNull(message = "Please tell us your destination")
+	@NotNull(message = "Please enter the destination stop")
 	private String routeTo;
 	
-	private LocalTime arrivalTime;
-	private LocalTime departureTime;
+	private LocalTime depurtureTime;
 	
-	@NotNull(message = "How many seats you have still we don't know")
-	@Min(value = 0, message = "Minimum seats should be 30")
-	@Max(value = 100, message = "Your bus capacity at most should be 100")
+	private LocalTime arrivalTime;
+		
+	@NotNull(message = "Please enter the total seats")
 	private int seats;
 	
-	@NotNull(message = "Can not be null")
-	@Max(value = 100, message = "Your seat availability can not be beyond 100")
-	@Min(value = 0, message = "you can't put a negetive value")
-	private int avilableSeats;
-	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private Feedback feedback;
-//	@JsonIgnore
-	
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	private Reservation reservation;
-//	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private List<Route> routes;
+	private int availableSeats;
 
 	public Bus() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Bus(int busId, @NotNull(message = "Please enter the bus name") String busName,
-			@NotNull(message = "Please enter the bus type") String busType,
-			@NotNull(message = "Please let us know your source of destination") String routeFrom,
-			@NotNull(message = "Please tell us your destination") String routeTo,
-			
-			@NotNull(message = "How many seats you have still we don't know") @Min(value = 30, message = "Minimum seats should be 30") @Max(value = 100, message = "Your bus capacity at most should be 100") int seats,
-			@NotNull(message = "Can not be null") @Max(value = 100, message = "Your seat availability can not be beyond 100") @Min(value = 0, message = "you can't put a negetive value") int avilableSeats,
-			Feedback feedback, Reservation reservation, List<Route> routes) {
+	public Bus(int busId, @NotNull(message = "Please enter the name") String busName,
+			@NotNull(message = "Please enter the driver name") String driverName,
+			@NotNull(message = "Please add bus type") String busType,
+			@NotNull(message = "Please enter the source stop") String routeFrom,
+			@NotNull(message = "Please enter the destination stop") String routeTo, LocalTime arrivalTime,
+			LocalTime depurtureTime, @NotNull(message = "Please enter the total seats") int seats, int availableSeats) {
 		super();
 		this.busId = busId;
 		this.busName = busName;
+		this.driverName = driverName;
 		this.busType = busType;
 		this.routeFrom = routeFrom;
 		this.routeTo = routeTo;
-		this.arrivalTime = LocalTime.now().plusHours(4);
-		this.departureTime = LocalTime.now().plusHours(5);
+		this.arrivalTime = arrivalTime;
+		this.depurtureTime = depurtureTime;
 		this.seats = seats;
-		this.avilableSeats = avilableSeats;
-//		this.feedback = feedback;
-		this.reservation = reservation;
-//		this.routes = routes;
+		this.availableSeats = availableSeats;
 	}
 
 	public int getBusId() {
@@ -101,6 +81,14 @@ public class Bus {
 
 	public void setBusName(String busName) {
 		this.busName = busName;
+	}
+
+	public String getDriverName() {
+		return driverName;
+	}
+
+	public void setDriverName(String driverName) {
+		this.driverName = driverName;
 	}
 
 	public String getBusType() {
@@ -128,19 +116,19 @@ public class Bus {
 	}
 
 	public LocalTime getArrivalTime() {
-		return arrivalTime.now().plusHours(4);
+		return arrivalTime;
 	}
 
 	public void setArrivalTime(LocalTime arrivalTime) {
-		this.arrivalTime = arrivalTime.now().plusHours(4);
+		this.arrivalTime = arrivalTime;
 	}
 
-	public LocalTime getDepartureTime() {
-		return departureTime.now().plusHours(5);
-		}
+	public LocalTime getDepurtureTime() {
+		return depurtureTime;
+	}
 
-	public void setDepartureTime(LocalTime departureTime) {
-		this.departureTime = departureTime.now().plusHours(5);
+	public void setDepurtureTime(LocalTime depurtureTime) {
+		this.depurtureTime = depurtureTime;
 	}
 
 	public int getSeats() {
@@ -151,56 +139,21 @@ public class Bus {
 		this.seats = seats;
 	}
 
-	public int getAvilableSeats() {
-		return avilableSeats;
+	public int getAvailableSeats() {
+		return availableSeats;
 	}
 
-	public void setAvilableSeats(int avilableSeats) {
-		this.avilableSeats = avilableSeats;
+	public void setAvailableSeats(int availableSeats) {
+		this.availableSeats = availableSeats;
 	}
-
-	
-	
-//	public Feedback getFeedback() {
-//		return feedback;
-//	}
-//
-//	public void setFeedback(Feedback feedback) {
-//		this.feedback = feedback;
-//	}
-////public Reservation getReservation() {
-//}
-//
-//}
-////		return reservation;
-////	}
-////
-////	public void setReservation(Reservation reservation) {
-////		this.reservation = reservation;
-////	}
-////
-////	public List<Route> getRoutes() {
-////		return routes;
-////	}
-
-	public Reservation getReservation() {
-		return reservation;
-	}
-
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
-	}
-
-	
 
 	@Override
 	public String toString() {
-		return "Bus [busId=" + busId + ", busName=" + busName + ", busType=" + busType + ", routeFrom=" + routeFrom
-				+ ", routeTo=" + routeTo + ", arrivalTime=" + arrivalTime + ", departureTime=" + departureTime
-				+ ", seats=" + seats + ", avilableSeats=" + avilableSeats + " reservation="
-				;
+		return "Bus [busId=" + busId + ", busName=" + busName + ", driverName=" + driverName + ", busType=" + busType
+				+ ", routeFrom=" + routeFrom + ", routeTo=" + routeTo + ", arrivalTime=" + arrivalTime
+				+ ", depurtureTime=" + depurtureTime + ", seats=" + seats + ", availableSeats=" + availableSeats + "]";
 	}
+	
+	
+	
 }
-	
-	
-

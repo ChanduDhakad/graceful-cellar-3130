@@ -34,14 +34,14 @@ public class Feedback {
 	
 	private LocalDate feedback;
 	
-	/*
-//	
+	
+
 //	@JsonIgnore
 //	@Embedded
 //	private User user;
-//	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private Bus bus;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Bus bus;
 
 	public Feedback() {
 		super();
@@ -60,7 +60,7 @@ public class Feedback {
 		this.overallRating = overallRating;
 		this.comments = comments;
 		this.feedback = feedback;
-		this.user = user;
+//		this.user = user;
 		this.bus = bus;
 	}
 
@@ -112,13 +112,13 @@ public class Feedback {
 		this.feedback = feedback;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 	public Bus getBus() {
 		return bus;
@@ -132,9 +132,9 @@ public class Feedback {
 	public String toString() {
 		return "Feedback [feedbackId=" + feedbackId + ", driverRating=" + driverRating + ", serviceRating="
 				+ serviceRating + ", overallRating=" + overallRating + ", comments=" + comments + ", feedback="
-				+ feedback + ", user=" + user + ", bus=" + bus + "]";
+				+ feedback + ",  bus=" + bus + "]";
 	}
 	
-	*/
+	
 	
 }
