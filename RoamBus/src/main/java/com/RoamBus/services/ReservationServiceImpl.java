@@ -45,9 +45,9 @@ public class ReservationServiceImpl implements ReservationService {
 //	                   @Autowired
 //		                private  SessionDao  cDao;
 	
-	                   
-	                   @Autowired
-		                private UserDao  userDao;
+//	                   
+//	                   @Autowired
+//		                private UserDao  userDao;
 	                   
 	              
 	                   
@@ -76,22 +76,22 @@ public class ReservationServiceImpl implements ReservationService {
 ;		       
 		       // step(3) -> Check sit available or not 
                      
-               if(bus.getAvilableSeats()<=0) throw new  BusException(" Not Sit  is aviable for   Bus Name  "+Bname+Bname +" BusId "+bus.getBusId());
+               if(bus.getAvailableSeats()<=0) throw new  BusException(" Not Sit  is aviable for   Bus Name  "+Bname+Bname +" BusId "+bus.getBusId());
                
                
                //  step(4)-->find the user details using key value 
                
-                 Optional<User> opt= userDao.findById(cu.getUserId());
+//                 Optional<User> opt= userDao.findById(cu.getUserId());
                  
                  // step(5) check it available or not for login user id
                  
                  
-                 if(opt.isEmpty()) throw new  BusException(" No user available with User Id  "+cu.getUserId());
+//                 if(opt.isEmpty()) throw new  BusException(" No user available with User Id  "+cu.getUserId());
                
                // step(4) -->  Reservation object Add   bus details and user details
                
                    res.setBus(bus);
-                   res.setUser(opt.get());
+//                   res.setUser(opt.get());
                   
                   
 
@@ -124,9 +124,9 @@ public class ReservationServiceImpl implements ReservationService {
                     Bus bus=    busDao.findBybusName(Bname);
                     res.setBus(bus);
                     
-                    Optional<User> opt= userDao.findById(cu.getUserId());
-                    if(opt.isEmpty()) throw new UserException("No user is exist with Id "+cu.getUserId());
-                    res.setUser(opt.get());
+//                    Optional<User> opt= userDao.findById(cu.getUserId());
+//                    if(opt.isEmpty()) throw new UserException("No user is exist with Id "+cu.getUserId());
+//                    res.setUser(opt.get());
                     
                 
                    return  resDao.save(res);
@@ -165,7 +165,7 @@ public class ReservationServiceImpl implements ReservationService {
 	       
 	                 Bus bus= res.getBus();
 	       
-	                   bus.setAvilableSeats(bus.getAvilableSeats()+1);
+	                   bus.setAvailableSeats(bus.getAvailableSeats()+1);
 	                   
 	                   busDao.save(bus);
 	                   return res;

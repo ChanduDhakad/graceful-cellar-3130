@@ -29,10 +29,10 @@ public class Reservation {
 	private LocalDate localDate;
 	private LocalTime time;
 	
-//	@NotNull(message = "Please tell us your source location")
+	@NotNull(message = "Please tell us your source location")
 	private String source;
 	
-//	@NotNull(message = "Please tell us your destination")
+	@NotNull(message = "Please tell us your destination")
 	private String destination;
 	
       //@JsonIgnore
@@ -127,20 +127,20 @@ public class Reservation {
 		this.bus = bus;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	@Override
-	public String toString() {
-		return "Reservation [reservationId=" + reservationId + ", status=" + status + ", Type=" + Type + ", localDate="
-				+ localDate + ", time=" + time + ", source=" + source + ", destination=" + destination + ", bus=" + bus
-				+ ", user=" + user + "]";
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "Reservation [reservationId=" + reservationId + ", status=" + status + ", Type=" + Type + ", localDate="
+//				+ localDate + ", time=" + time + ", source=" + source + ", destination=" + destination + ", bus=" + bus
+//				+ ", user=" + user + "]";
+//	}
 
 
 	

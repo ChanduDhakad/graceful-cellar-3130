@@ -66,7 +66,7 @@ public class User {
 		this.lastName = lastName;
 		this.contact = contact;
 		this.email = email;
-		this.reservation = reservation;
+//		this.reservation = reservation;
 	}
 
 	public int getUserLoginId() {
@@ -126,20 +126,20 @@ public class User {
 	}
 
 
-	public Reservation getReservation() {
-		return reservation;
-	}
+//	public Reservation getReservation() {
+//		return reservation;
+//	}
+//
+//	public void setReservation(Reservation reservation) {
+//		this.reservation = reservation;
+//	}
 
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userLoginId=" + userLoginId + ", userName=" + userName + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", contact=" + contact + ", email=" + email + ", reservation="
-				+ reservation + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "User [userLoginId=" + userLoginId + ", userName=" + userName + ", password=" + password + ", firstName="
+//				+ firstName + ", lastName=" + lastName + ", contact=" + contact + ", email=" + email + ", reservation="
+//				+ reservation + "]";
+//	}
 	
 
 }
