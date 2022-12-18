@@ -38,11 +38,12 @@
 # Modules
 
 - Login Module
-- Restaurant owner Module
-- Customer Module
-- Category Module
-- FoodCart Module
-- Order and Bill Module
+- Feedback Module
+- User Module
+- Bus Module
+- Route Module
+- Admin Module
+- CurrentUser module
 
 
 
