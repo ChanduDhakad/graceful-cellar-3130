@@ -52,14 +52,17 @@
 
 ## Owner Features
 - Owner can login by giving valid credentials.
-- Owner can add category and provide the item to the respective category. 
-- Owner can add the status and set the price.
+- Owner can add the bus details route details and update the seats accordingly.
+- Owner can see all the reservation as well as all the list of customers/users.
+- Owner can update the route , bus, admin details.
+- Owner can delete any route and bus as well.
 
 
 ## Customer Features
 - Customer can login in the application and update their information using their username and password.
-- Customer can book Bus  using by adding into cart and destination.
-- Customer can access the bill after the purchase & can have the history is completed.
+- Customer can book Bus as per their source and destination.
+- Customer can access the update reservation as well as their own details.
+- Customers are able to delete their reservation and their account from the system.
 
 
 # Installation & Run
@@ -69,7 +72,7 @@
 ```
     server.port=8080
 
-    spring.datasource.url=jdbc:mysql://localhost:3306/RhomBusDB;
+    spring.datasource.url=jdbc:mysql://localhost:3306/RoamBusDB;
     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
     spring.datasource.username=root
     spring.datasource.password=root
