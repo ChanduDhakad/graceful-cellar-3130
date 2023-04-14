@@ -41,6 +41,7 @@
 - Feedback Module
 - User Module
 - Bus Module
+- Reservation Module
 - Route Module
 - Admin Module
 - CurrentUser module
