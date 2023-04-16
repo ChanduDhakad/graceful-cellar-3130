@@ -48,30 +48,6 @@
 
 
 
-# Features
-
-- Data Authentication and Validation for all the users (Bus owner, User)
-
-## Owner Features
-- Owner can login by giving valid credentials.
-- Owner can add the bus details route details and update the seats accordingly.
-- Owner can see all the reservation as well as all the list of customers/users.
-- Owner can update the route , bus, admin details.
-- Owner can delete any route and bus as well.
-
-
-## Customer Features
-- Customer can login in the application and update their information using their username and password.
-- Customer can book Bus as per their source and destination.
-- Customer can access the update reservation as well as their own details.
-- Customers are able to delete their reservation and their account from the system.
-
-
-# Installation & Run
- - Before running the API server, you should update the database config inside the application.properties file.
-- Update the port number, username and password as per your local database configuration.
-
-```
     server.port=8080
 
     spring.datasource.url=jdbc:mysql://localhost:3306/RoamBusDB;
@@ -87,9 +63,6 @@ https://localhost:8080/
 ```
 http://localhost:8080/swagger-ui/
 ```
-
-
-![ErDiagram](![Screenshot (664)](https://user-images.githubusercontent.com/97527158/208291924-2e3c72f3-10a5-4853-bf7f-ed1201719dc0.png))
 
 
 
