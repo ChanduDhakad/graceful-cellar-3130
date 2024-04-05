@@ -81,10 +81,12 @@
 
 # API Root Endpoint
 ```
-https://localhost:8080/
+
+https://raombus-production.up.railway.app/
 ```
 ```
-http://localhost:8080/swagger-ui/
+
+https://raombus-production.up.railway.app/swagger-ui/index.html
 ```
 
 
