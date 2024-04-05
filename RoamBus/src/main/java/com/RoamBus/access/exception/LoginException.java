@@ -6,9 +6,8 @@ package com.RoamBus.access.exception;
 public class LoginException  extends Exception{
 
 	
-	  public  LoginException() {
-		// TODO Auto-generated method stub
-
+	 public  LoginException() {
+		
 	}
 	
 	public  LoginException(String message) {

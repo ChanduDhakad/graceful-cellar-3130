@@ -31,11 +31,4 @@ public class LoginUserSession {
 	private String email;
 	private String password;
 	
-	
-	
-	
-
-	
-	
-	
 }

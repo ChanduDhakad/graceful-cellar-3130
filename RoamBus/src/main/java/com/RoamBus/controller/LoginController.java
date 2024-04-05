@@ -12,24 +12,21 @@ import com.RoamBus.access.exception.LoginException;
 import com.RoamBus.model.LoginDTO;
 import com.RoamBus.services.LoginService;
 
-
-
 @RestController
 public class LoginController {
-	
+
 	@Autowired
 	private LoginService lService;
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody LoginDTO dto) throws LoginException{
-		String result=lService.login(dto);
-		
-		return new ResponseEntity<String>(result,HttpStatus.OK);
+	public ResponseEntity<String> login(@RequestBody LoginDTO dto) throws LoginException {
+		String result = lService.login(dto);
+		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/logout")
-	public String logout(@RequestParam (required = false) String key) throws LoginException {
+	public String logout(@RequestParam(required = false) String key) throws LoginException {
 		return lService.logout(key);
 	}
-	
+
 }

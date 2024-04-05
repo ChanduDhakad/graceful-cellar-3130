@@ -7,9 +7,5 @@ import com.RoamBus.model.Admin;
 
 @Repository
 public interface AdminDao extends JpaRepository<Admin, Integer> {
-	
-	
 	public Admin findByAdminUsername(String username);
-	
-	
 }

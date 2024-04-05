@@ -16,7 +16,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
 @Data
 @ToString
 @AllArgsConstructor
@@ -43,9 +42,4 @@ public class Route {
 	 @OneToMany(cascade = CascadeType.ALL)
 	 private List<Bus> bus;
 
-	
-	
-	 
-	 
-	 
 }

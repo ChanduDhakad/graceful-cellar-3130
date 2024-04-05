@@ -25,33 +25,29 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 public class Feedback {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int feedbackId;
-	
+
 	@NotNull(message = "Please give our driver a rating as per your experience")
 	private int driverRating;
-	
+
 	@NotNull(message = "Please give our service a rating as per your experience")
 	private int serviceRating;
-	
+
 	@NotNull(message = "Please give our overall a rating as per your experience")
 	private int overallRating;
-	
+
 	private String comments;
-	
+
 	private LocalDate date;
-	
-	
 
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Bus bus;
 
-	
-	
 }

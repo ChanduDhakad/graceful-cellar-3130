@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 		servers = {
 				@Server(url = "/", description = "RoamBus Server URL")
 		}
+		
 )
 @SpringBootApplication
 public class RoamBusApplication {
